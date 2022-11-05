@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --a-azul: #06CDFF;
+    --azul: #4700D8;
+    --morado: #8200FF;
+    --rosa: #F900BF;
+    --b-azul: #0c1633;
+    --c-azul: #000d30;
+}
+@font-face {
+    font-family: saturno-text;
+    src: url('BraciolaMs-5-t.ttf');
+}
+body{
+    width: 100vw;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0c1633;
+}
+
+.saturno__nav{
+    width: 100%;
+    height: 8vh;
+    color: var(--azul);
+}
+.saturno__nav-ul{
+    width: 100%;
+    height: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.saturno__nav-ul li{
+    line-height: 8vh;
+}
+
+.saturno__nav-i{
+    display: block;
+    text-decoration: none;
+    font-family: saturno-text;
+    letter-spacing: 3px;
+    font-size: 1.5rem;
+    padding: 0 4vw;
+    text-shadow: 2px 2px 0 var(--morado);
+}
+.saturno__nav-i:hover{
+    color: #06CDFF;
+}
+.saturno__nav-ul li:nth-child(2){
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
