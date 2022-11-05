@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
 :root{
     --a-azul: #06CDFF;
@@ -15,17 +16,30 @@
     font-family: saturno-text;
     src: url('BraciolaMs-5-t.ttf');
 }
+@font-face {
+    font-family: distanGalaxy;
+    src: url('SfDistantGalaxy-title.ttf');
+}
+@font-face {
+    font-family: date;
+    src: url('Avcosmos-4-title.otf');
+}
+
 body{
     width: 100vw;
     height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #0c1633;
+    perspective: 400px;
+    cursor: crosshair;
 }
 
 .saturno__nav{
-    width: 100%;
+    width: 100vw;
     height: 8vh;
-    color: var(--azul);
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 .saturno__nav-ul{
     width: 100%;
@@ -40,19 +54,178 @@ body{
 }
 
 .saturno__nav-i{
+    color: var(--a-azul);
     display: block;
     text-decoration: none;
     font-family: saturno-text;
     letter-spacing: 3px;
     font-size: 1.5rem;
     padding: 0 4vw;
-    text-shadow: 2px 2px 0 var(--morado);
+    text-shadow: 2px 2px 5px var(--a-azul);
 }
 .saturno__nav-i:hover{
-    color: #06CDFF;
+    color: var(--rosa);
+    animation: mutar 1s step-end infinite;
 }
 .saturno__nav-ul li:nth-child(2){
     text-transform: uppercase;
-    font-weight: 800;
 }
 
+/* Header */
+
+header{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--c-azul) ;
+    background-image:
+    linear-gradient(var(--azul) 1px, var(--morado) 1px, transparent 1px),
+    linear-gradient(90deg, var(--azul) 1px,var(--morado)1px,  transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+
+.header__stick-1 ,.header__stick-2{
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    margin: 1rem;
+    bottom: 2rem;
+    right: 3rem;
+    font-family: distanGalaxy;
+    font-size: 6rem;
+    transform-origin: right;
+    color: #06CDFF;
+    transform: scaleY(-1) scaleX(-1) rotate(90deg);
+    /* text-orientation: sideways-right; */
+    z-index: 90;
+}
+.header__stick-1{
+    left: -3rem;
+}
+
+
+/* Header IMAGES */
+.header__images{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+.header__saturno{
+    position: absolute;
+    width: 100rem;
+    top: 0;
+    left: -50rem;
+    transform: scaleX(-1) ;
+    filter: brightness(2) contrast(.2);
+    z-index: 0;
+}
+
+.header__rauw{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.header__rauw-prof{
+    margin-top: 10vh;
+    height: 100vh;
+    filter: drop-shadow(-10px -5px 0px var(--a-azul)) drop-shadow(10px -5px 0 var(--azul)) ;
+    animation: float 3s ease-in-out infinite;
+    z-index: 50;
+}
+
+.header__rauw-guard{
+    position: absolute;
+    box-sizing: content-box;
+    bottom: 0;
+    left: -50%;
+    width: 25rem;
+    filter: drop-shadow(-10px -5px 0px var(--azul)) drop-shadow(10px -5px 0 var(--azul)) ;
+}
+
+@media (orientation: portrait) {
+    .header__rauw{
+        transform: translateX(35%);
+    }
+    .header__rauw-guard{
+        left: -30%;
+        width: 80%;
+    }
+}
+
+@keyframes float {
+    0%,100%{
+        transform: translate(-5px, -10px);
+    }
+    50%{
+        transform: translate(5px,0)
+    }
+}
+
+@keyframes mutar {
+    0%,40%,70%{
+        transform: translate(-5px,5px);
+    }
+    10%,80%{
+        transform: translate(5px,-5px);
+    }
+    20%,50%,100%{
+        transform: translate(-5px,0px);
+    }
+    30%,60%,90%{
+        transform: translate(5px,5px);
+    }
+
+}
+
+/* DATE RELASE SATURNO */
+
+.dateRelase{
+    position: relative;
+    width: 100vw;
+    height: auto;
+    background-color: var(--c-azul);
+    background: radial-gradient(circle at bottom left,transparent 25%,var(--azul) 25.5%, var(--morado) 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,var(--morado) 34.5%, var(--azul) 45.5%, transparent 46%, transparent 100%);
+    background-size: 5em 5em;
+    box-shadow: inset 0 3px 10px 2px var(--c-azul), inset 0 -5px 10px 2px var(--c-azul) ;
+    z-index: 80;
+    border-top: 3px solid var(--azul);
+    border-bottom: 3px solid var(--azul);
+    outline: 3px solid var(--morado);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    overflow: hidden;
+
+}
+
+.dateRelase-img{
+    position: relative;
+    height: 20vh;
+    filter: brightness(1.3) contrast(1.4) drop-shadow( .5rem .5rem 0 var(--rosa)) drop-shadow( 1rem .5rem 0 var(--morado)) ;
+    transform: scale(1.3);
+}
+
+.dateRelase-date{
+    font-family: date;
+    font-size: 8rem;
+    color: var(--a-azul);
+    text-shadow: 3px 3px 5px var(--a-azul), -3px -3px 5px var(--a-azul);
+}
+
+.dateRelase-ufo{
+    height: 20vh;
+    width: 30vh;
+    background-image: url('../img/rauw_88.gif');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 2vh;
+}
