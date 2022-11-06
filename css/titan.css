@@ -30,6 +30,11 @@
     src: url('AlienRavager-texto-corto.ttf');
 }
 
+@font-face {
+    font-family: timer;
+    src: url('Segment7-timer.otf');
+}
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -366,6 +371,59 @@ header{
 
 .active{
     height: 25rem ;
+}
+
+
+/* COUNT DOWN*/
+
+.countDown{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: space-evenly;
+    background: radial-gradient(var(--b-azul) 15%, transparent 16%) 0 0;
+    background-color:black;
+    background-size:16px 16px;
+    border-top: 3px solid var(--azul);
+    border-bottom: 3px solid var(--azul);
+    outline: 3px solid var(--morado);
+    box-shadow: inset 0 5px 10px 2px var(--c-azul), inset 0 -5px 10px 2px var(--c-azul) ;
+    overflow: visible;
+}
+
+.countDown__boxFather{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 60%;
+    margin: 10px 0;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    overflow: visible;
+}
+
+.countDown__boxSon{
+    width: 20%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateZ(100px);
+    z-index: 60;
+}
+
+.countDown__boxSon-timer{
+    text-align: center;
+    font-family: timer;
+    font-size: 6rem;
+    color: var(--a-azul);
+}
+.countDown__boxSon-text{
+    text-align: center;
+    font-family: saturno-text ;
+    font-size: 2rem;
+    color: var(--a-azul);
 }
 
 /* ANIMATIONS */
