@@ -25,25 +25,39 @@
     src: url('Avcosmos-4-title.otf');
 }
 
+@font-face {
+    font-family: tracklist;
+    src: url('AlienRavager-texto-corto.ttf');
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--a-azul);
+}
+
+
 body{
     width: 100vw;
-    height: 100%;
     overflow-x: hidden;
     background-color: #0c1633;
     perspective: 400px;
-    cursor: crosshair;
 }
 
 .saturno__nav{
+    position: sticky;
     width: 100vw;
-    height: 8vh;
-    position: fixed;
+    height: 0vh;
     top: 0;
+    left: 0;
     z-index: 100;
 }
 .saturno__nav-ul{
+    position: relative;
     width: 100%;
-    height: 100%;
+    height: 8vh;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -147,6 +161,7 @@ header{
     left: -50%;
     width: 25rem;
     filter: drop-shadow(-10px -5px 0px var(--azul)) drop-shadow(10px -5px 0 var(--azul)) ;
+    animation: float 3s 1.5s ease-in-out infinite;
 }
 
 @media (orientation: portrait) {
@@ -161,10 +176,10 @@ header{
 
 @keyframes float {
     0%,100%{
-        transform: translate(-5px, -10px);
+        transform: translate(-5px, 5px);
     }
     50%{
-        transform: translate(5px,0)
+        transform: translate(5px,15px)
     }
 }
 
@@ -189,7 +204,7 @@ header{
 .dateRelase{
     position: relative;
     width: 100vw;
-    height: auto;
+    height: 30vh;
     background-color: var(--c-azul);
     background: radial-gradient(circle at bottom left,transparent 25%,var(--azul) 25.5%, var(--morado) 36%, transparent 37%, transparent 100%),radial-gradient(circle at top right,transparent 34%,var(--morado) 34.5%, var(--azul) 45.5%, transparent 46%, transparent 100%);
     background-size: 5em 5em;
@@ -201,7 +216,7 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     overflow: hidden;
 
 }
@@ -210,14 +225,23 @@ header{
     position: relative;
     height: 20vh;
     filter: brightness(1.3) contrast(1.4) drop-shadow( .5rem .5rem 0 var(--rosa)) drop-shadow( 1rem .5rem 0 var(--morado)) ;
-    transform: scale(1.3);
+    transform: scale(2);
 }
 
 .dateRelase-date{
     font-family: date;
-    font-size: 8rem;
+    font-size: 7rem;
     color: var(--a-azul);
-    text-shadow: 3px 3px 5px var(--a-azul), -3px -3px 5px var(--a-azul);
+    text-shadow: 0px 0px 10px var(--a-azul);
+    border-radius: 0 3rem 0 3rem;
+    background-color: var(--azul);
+    padding: 10px 20px;
+    transform-style: preserve-3d;
+    perspective: 600px;
+}
+
+.dateRelase-date div{
+    transform: translateZ(50px);
 }
 
 .dateRelase-ufo{
@@ -229,3 +253,152 @@ header{
     background-repeat: no-repeat;
     margin: 2vh;
 }
+
+@media (orientation: portrait){
+    .dateRelase{
+        height: auto;
+        flex-direction: column;
+    }
+    .dateRelase-date{
+        margin: 2% 0;
+    }
+    .dateRelase-img{
+       display: none;
+    }
+    .dateRelase-ufo{
+        width: 100%;
+        background-repeat: repeat-x;
+    }
+}
+
+/* TRACKLIST */
+
+.tracklist{
+    position: relative;
+    height: auto;
+    width: 100%;
+    background-color: var(--c-azul) ;
+    background-image:
+    linear-gradient(var(--azul) 1px, var(--morado) 1px, transparent 1px),
+    linear-gradient(90deg, var(--azul) 1px,var(--morado)1px,  transparent 1px);
+    background-size: 30px 30px;
+    background-attachment: fixed;
+    padding: 2% 0 0 0;
+}
+
+.tracklist-container{
+    width: 100vw ;
+    height: auto;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tracklist-title{
+    width: 100%;
+    margin: 3% 0;
+    text-align: center;
+    font-family: tracklist;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    color: var(--rosa);
+}
+
+.tracklsit-planet{
+    height: auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.planet-x{
+    position: relative;
+    height: 3rem;
+    border: 3px solid var(--rosa);
+    margin: 10px 0; 
+    counter-increment: track;
+    color: var(--rosa);
+    text-transform: uppercase;
+    line-height: 3rem;
+    font-family: date ;
+    font-weight: 800;
+    font-size: 2rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .4s ease-in-out;
+}
+
+.planet-x::before{
+    content: '# ' counter(track) ' ';
+    color: var(--rosa);
+    padding-left: 10px;
+}
+.planet-x::after{
+    position: absolute;
+    content: '';
+    right: 1rem;
+    top: .3rem;
+    width: 1rem;
+    height: 1rem;
+    border-left: 5px solid var(--rosa);
+    border-top: 5px solid var(--rosa);
+    transform: rotate(-135deg);
+    transition: .2s ease;
+}
+
+.planet-x h3{
+    display: inline;
+}
+
+.planet-x__vid{
+    display: block;
+    margin: 1vh auto;
+    height: 20rem;
+    width: 32rem;
+}
+.active::after{
+    top: 1rem;
+    transform: rotate(45deg);
+}
+
+.active{
+    height: 25rem ;
+}
+
+/* ANIMATIONS */
+
+.rawu_ufo_random{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-image: url('../img/saturno_88.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 95;
+    top: 0;
+    left: 0;
+}
+
+@keyframes anime-ufo {
+    0%,100%{
+        top: 0;
+        left: 0;
+    }
+    25%{
+        top: 90%;
+        left: 0%;
+    }
+    50%{
+        top: 90%;
+        left: 90%;
+    }
+    75%{
+        top: 0%;
+        left: 90%;
+    }
+}
+
