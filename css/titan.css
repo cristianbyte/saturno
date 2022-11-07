@@ -12,6 +12,42 @@
     --b-azul: #0c1633;
     --c-azul: #000d30;
 }
+
+.loader{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background: black;
+    z-index: 110;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader img{
+    fill-opacity: 0;
+    animation: shiny 1s ease-in-out infinite  ;
+    height: 140px;
+    width: 240px;
+}
+
+.hidden{
+    display: none;
+}
+
+@keyframes shiny {
+    0%{
+        opacity: 0;
+        filter: drop-shadow( 0 0 40px #ffffff33);
+        transform: scale(.8);
+    }
+    100%{
+        transform: scale(1.2);
+        opacity: 1;
+        filter: drop-shadow( 0 0 10px #ffffff33);
+    }    
+}
+
 @font-face {
     font-family: saturno-text;
     src: url('BraciolaMs-5-t.ttf');
@@ -43,6 +79,10 @@
     background: var(--a-azul);
 }
 
+html, body{
+    scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
 
 body{
     width: 100vw;
@@ -91,6 +131,62 @@ body{
 }
 
 /* Header */
+.lastPost{
+    position: absolute;
+    top: 8vh;
+    left: 12%;
+    height: 85vh;
+    width: 45vh;
+    z-index: 85;
+}
+@media (max-width: 800px  ) {
+    .lastPost{
+        display: none;
+    }
+}
+
+.official{
+    position: absolute;
+    bottom: -96vh;
+    right: 20px;
+    z-index: 105;
+}
+
+.official button{
+    background-color: var(--azul);
+    color: var(--a-azul);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.1rem;
+    border-radius: 40px;
+    padding: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.official button:hover{
+    background-color: var(--a-azul);
+    color: var(--azul);
+}
+
+.lastPost__h2{
+    font-family: distanGalaxy;
+    font-size: 2rem;
+    color: var(--rosa);
+}
+
+.lastPost__vid{
+    position: relative;
+    width: 100%;
+    height: 95%;
+    overflow-y: hidden;
+    border: 3px solid var(--a-azul);
+    border-radius: 5px;
+}
+.tiktok-embed{
+    margin: 0 !important;
+}
 
 header{
     position: relative;
@@ -316,7 +412,6 @@ header{
     width: 90%;
     display: flex;
     flex-direction: column;
-
 }
 
 .planet-x{
@@ -327,6 +422,7 @@ header{
     counter-increment: track;
     color: var(--rosa);
     text-transform: uppercase;
+    text-align: center;
     line-height: 3rem;
     font-family: date ;
     font-weight: 800;
@@ -337,9 +433,11 @@ header{
 }
 
 .planet-x::before{
+    position: absolute;
     content: '# ' counter(track) ' ';
     color: var(--rosa);
     padding-left: 10px;
+    left: 0;
 }
 .planet-x::after{
     position: absolute;
@@ -378,34 +476,44 @@ header{
 
 .countDown{
     width: 100%;
-    height: 30vh;
+    height: calc(10vw + 5rem);
     display: flex;
     justify-content: space-evenly;
-    background: radial-gradient(var(--b-azul) 15%, transparent 16%) 0 0;
-    background-color:black;
-    background-size:16px 16px;
+    /* background: radial-gradient(var(--b-azul) 15%, transparent 16%) 0 0; */
+    background-image: url('../img/rauw_0122.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     border-top: 3px solid var(--azul);
     border-bottom: 3px solid var(--azul);
     outline: 3px solid var(--morado);
     box-shadow: inset 0 5px 10px 2px var(--c-azul), inset 0 -5px 10px 2px var(--c-azul) ;
-    overflow: visible;
 }
 
-.countDown__boxFather{
+.countDown__boxParent{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    margin: 10px 0;
+    transform-style: preserve-3d;
+    perspective: 600px;
+}
+
+.countDown__box{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    width: 60%;
-    margin: 10px 0;
-    transform-style: preserve-3d;
-    perspective: 600px;
-    overflow: visible;
+    width: 100%;
 }
 
 .countDown__boxSon{
     width: 20%;
-    height: 80%;
+    height: calc(8vw + 2rem);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -416,13 +524,14 @@ header{
 .countDown__boxSon-timer{
     text-align: center;
     font-family: timer;
-    font-size: 6rem;
+    font-size: calc(6vw + 1rem);
     color: var(--a-azul);
+    text-shadow: 0 0 5px var(--a-azul);
 }
 .countDown__boxSon-text{
     text-align: center;
     font-family: saturno-text ;
-    font-size: 2rem;
+    font-size: calc(2vw + .5rem);
     color: var(--a-azul);
 }
 
